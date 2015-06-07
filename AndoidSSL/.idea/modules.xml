@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndoidSSL.iml" filepath="$PROJECT_DIR$/AndoidSSL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ULibAndroid.iml" filepath="$PROJECT_DIR$/ULibAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UnityAndroidLibRelease/UnityAndroidLibRelease.iml" filepath="$PROJECT_DIR$/UnityAndroidLibRelease/UnityAndroidLibRelease.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pluginAndroid.iml" filepath="$PROJECT_DIR$/pluginAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ulib/ulib.iml" filepath="$PROJECT_DIR$/ulib/ulib.iml" />
+    </modules>
+  </component>
+</project>
+
