@@ -53,7 +53,7 @@ TiQhVKnT/a8KxWgGDyzO6xIg
 -----END CERTIFICATE-----";
 
 
-        AndroidJavaClass clsJavaSSLHelper = new AndroidJavaClass("co.fourscience.ulib.JavaSSLHelper");
+        AndroidJavaClass clsJavaSSLHelper = new AndroidJavaClass("co.fourscience.androidhttpsplugin.AndroidHttps");
         byte[] certBytes = System.Text.Encoding.ASCII.GetBytes(cert);
         clsJavaSSLHelper.CallStatic("trust", certBytes);
         mInitialized = true;
