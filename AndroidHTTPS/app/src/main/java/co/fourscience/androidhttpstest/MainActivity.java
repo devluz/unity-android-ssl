@@ -40,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
         mText = (EditText)this.findViewById(R.id.log);
         mText.append("\nstart");
 
-        String cert = "-----BEGIN CERTIFICATE-----\n" +
+        String cert1 = "-----BEGIN CERTIFICATE-----\n" +
                 "MIIGPjCCBSagAwIBAgIHBVR6r4lN4jANBgkqhkiG9w0BAQsFADCBjDELMAkGA1UE\n" +
                 "BhMCSUwxFjAUBgNVBAoTDVN0YXJ0Q29tIEx0ZC4xKzApBgNVBAsTIlNlY3VyZSBE\n" +
                 "aWdpdGFsIENlcnRpZmljYXRlIFNpZ25pbmcxODA2BgNVBAMTL1N0YXJ0Q29tIENs\n" +
@@ -76,9 +76,37 @@ public class MainActivity extends ActionBarActivity {
                 "UCrqLWdlIhFfAygh4U0DjCItkcEtWZ0mSyRjdbzLwGgO76uyocOuiMHB5bv0IsA9\n" +
                 "TiQhVKnT/a8KxWgGDyzO6xIg\n" +
                 "-----END CERTIFICATE-----";
-        AndroidHttps.trust(cert.getBytes());
+
+
+        String cert2 = "-----BEGIN CERTIFICATE-----\n" +
+                "MIIDdTCCAl0CBFV013wwDQYJKoZIhvcNAQEFBQAwfzELMAkGA1UEBhMCTloxEjAQ\n" +
+                "BgNVBAgTCVNvdXRobGFuZDENMAsGA1UEBxMER29yZTENMAsGA1UEChMEbm9uZTEY\n" +
+                "MBYGA1UEAxMPbHV6LjRzY2llbmNlLmNvMSQwIgYJKoZIhvcNAQkBFhV0ZWM0c2Np\n" +
+                "ZW5jZUBnbWFpbC5jb20wHhcNMTUwNjA3MjM0NTAwWhcNMTYwNjA2MjM0NTAwWjB/\n" +
+                "MQswCQYDVQQGEwJOWjESMBAGA1UECBMJU291dGhsYW5kMQ0wCwYDVQQHEwRHb3Jl\n" +
+                "MQ0wCwYDVQQKEwRub25lMRgwFgYDVQQDEw9sdXouNHNjaWVuY2UuY28xJDAiBgkq\n" +
+                "hkiG9w0BCQEWFXRlYzRzY2llbmNlQGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEB\n" +
+                "BQADggEPADCCAQoCggEBALz3DJ/HB3T9/6Vs8JcQQlnZvqUVgy//RE5iySMrDVd7\n" +
+                "i7oYsTG3zZ0ATNXAd8hDlL6wimp/8DAWm3S0Dk5pBB71knCkNqaKtIHAHinSmTMd\n" +
+                "caYizMfVUIdbe43o/GM58y4dXtCNLMUvIGN5DFDiY/g5uRdmEUcxkhYGLv7WCNqn\n" +
+                "zEdLHUrgmjLdud6Ldooomb7R+R1FVEapp9szcYQONNx960clXZKdZcKb6YcTncQN\n" +
+                "V3wnpLAo/FfOQduv+iNVFhhE7nF5Eue8AaT53uRtUMBV7vUnVblN7yfWukOKUaDZ\n" +
+                "xKoZhloUQpiN8pg3QkaxzInEt9yheUeq7mRLsHDNVycCAwEAATANBgkqhkiG9w0B\n" +
+                "AQUFAAOCAQEAQG8FlKJZsC255kRLL54BAjd2fOqE8GAR7eGVt9mr+HdmU4m/gMrS\n" +
+                "PTB2ZwMquqrvw+v3/bO1Lj1HyQiYIgfPo5hlLXaZWc1Ao2SlnooK3rO1FI6++/yi\n" +
+                "OARjBg2VvSGjYQH93h2cm+ZGqsYL14wJo86HxxkRjGZQU/FhaLKWsabwh/9XPcgl\n" +
+                "6z47K9VR76c3MalFEc08ErILZXKwPUNpUdU1IzfpaySMq3RZvPnsZWVU4kWYaCLp\n" +
+                "UvxYEu37FRdy6YkTDOXd/PWcbOhdohcTmhJTrzQt6lhb1lJd+mhv5PHoYVPqzpc3\n" +
+                "7aXonx43QzkKUgDq+JBtcJlfzaX5NvOLkQ==\n" +
+                "-----END CERTIFICATE-----";
+        //AndroidHttps.trust(new byte[][]{cert1.getBytes(), cert2.getBytes()});
+        //AndroidHttps.trustEveryone();
+        AndroidHttps.addCertificate(cert1.getBytes());
+        AndroidHttps.addCertificate(cert2.getBytes());
+
         TestUrl("https://google.com");
         TestUrl("https://4science.co/justatest.txt");
+        TestUrl("https://luz.4science.co/anothertest.txt");
 
     }
 
