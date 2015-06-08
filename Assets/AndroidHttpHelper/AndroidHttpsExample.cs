@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TestScript : MonoBehaviour
+public class AndroidHttpsExample : MonoBehaviour
 {
     private bool mInitialized = false;
 
@@ -9,12 +9,7 @@ public class TestScript : MonoBehaviour
 
     void Awake()
     {
-        //in editor mode the UNITY_ANDROID can be set but it would still be fail. so check if we actually run on android
-        //not just for the android compile flag
-        if (Application.platform == RuntimePlatform.Android)
-        {
-#if UNITY_ANDROID
-            string cert1 = 
+        string cert1 = 
 @"-----BEGIN CERTIFICATE-----
 MIIGPjCCBSagAwIBAgIHBVR6r4lN4jANBgkqhkiG9w0BAQsFADCBjDELMAkGA1UE
 BhMCSUwxFjAUBgNVBAoTDVN0YXJ0Q29tIEx0ZC4xKzApBgNVBAsTIlNlY3VyZSBE
@@ -52,36 +47,31 @@ UCrqLWdlIhFfAygh4U0DjCItkcEtWZ0mSyRjdbzLwGgO76uyocOuiMHB5bv0IsA9
 TiQhVKnT/a8KxWgGDyzO6xIg
 -----END CERTIFICATE-----";
             
-            string cert2 = "-----BEGIN CERTIFICATE-----\n" +
-                "MIIDdTCCAl0CBFV013wwDQYJKoZIhvcNAQEFBQAwfzELMAkGA1UEBhMCTloxEjAQ\n" +
-                "BgNVBAgTCVNvdXRobGFuZDENMAsGA1UEBxMER29yZTENMAsGA1UEChMEbm9uZTEY\n" +
-                "MBYGA1UEAxMPbHV6LjRzY2llbmNlLmNvMSQwIgYJKoZIhvcNAQkBFhV0ZWM0c2Np\n" +
-                "ZW5jZUBnbWFpbC5jb20wHhcNMTUwNjA3MjM0NTAwWhcNMTYwNjA2MjM0NTAwWjB/\n" +
-                "MQswCQYDVQQGEwJOWjESMBAGA1UECBMJU291dGhsYW5kMQ0wCwYDVQQHEwRHb3Jl\n" +
-                "MQ0wCwYDVQQKEwRub25lMRgwFgYDVQQDEw9sdXouNHNjaWVuY2UuY28xJDAiBgkq\n" +
-                "hkiG9w0BCQEWFXRlYzRzY2llbmNlQGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEB\n" +
-                "BQADggEPADCCAQoCggEBALz3DJ/HB3T9/6Vs8JcQQlnZvqUVgy//RE5iySMrDVd7\n" +
-                "i7oYsTG3zZ0ATNXAd8hDlL6wimp/8DAWm3S0Dk5pBB71knCkNqaKtIHAHinSmTMd\n" +
-                "caYizMfVUIdbe43o/GM58y4dXtCNLMUvIGN5DFDiY/g5uRdmEUcxkhYGLv7WCNqn\n" +
-                "zEdLHUrgmjLdud6Ldooomb7R+R1FVEapp9szcYQONNx960clXZKdZcKb6YcTncQN\n" +
-                "V3wnpLAo/FfOQduv+iNVFhhE7nF5Eue8AaT53uRtUMBV7vUnVblN7yfWukOKUaDZ\n" +
-                "xKoZhloUQpiN8pg3QkaxzInEt9yheUeq7mRLsHDNVycCAwEAATANBgkqhkiG9w0B\n" +
-                "AQUFAAOCAQEAQG8FlKJZsC255kRLL54BAjd2fOqE8GAR7eGVt9mr+HdmU4m/gMrS\n" +
-                "PTB2ZwMquqrvw+v3/bO1Lj1HyQiYIgfPo5hlLXaZWc1Ao2SlnooK3rO1FI6++/yi\n" +
-                "OARjBg2VvSGjYQH93h2cm+ZGqsYL14wJo86HxxkRjGZQU/FhaLKWsabwh/9XPcgl\n" +
-                "6z47K9VR76c3MalFEc08ErILZXKwPUNpUdU1IzfpaySMq3RZvPnsZWVU4kWYaCLp\n" +
-                "UvxYEu37FRdy6YkTDOXd/PWcbOhdohcTmhJTrzQt6lhb1lJd+mhv5PHoYVPqzpc3\n" +
-                "7aXonx43QzkKUgDq+JBtcJlfzaX5NvOLkQ==\n" +
-                "-----END CERTIFICATE-----";
+        string cert2 = "-----BEGIN CERTIFICATE-----\n" +
+            "MIIDdTCCAl0CBFV013wwDQYJKoZIhvcNAQEFBQAwfzELMAkGA1UEBhMCTloxEjAQ\n" +
+            "BgNVBAgTCVNvdXRobGFuZDENMAsGA1UEBxMER29yZTENMAsGA1UEChMEbm9uZTEY\n" +
+            "MBYGA1UEAxMPbHV6LjRzY2llbmNlLmNvMSQwIgYJKoZIhvcNAQkBFhV0ZWM0c2Np\n" +
+            "ZW5jZUBnbWFpbC5jb20wHhcNMTUwNjA3MjM0NTAwWhcNMTYwNjA2MjM0NTAwWjB/\n" +
+            "MQswCQYDVQQGEwJOWjESMBAGA1UECBMJU291dGhsYW5kMQ0wCwYDVQQHEwRHb3Jl\n" +
+            "MQ0wCwYDVQQKEwRub25lMRgwFgYDVQQDEw9sdXouNHNjaWVuY2UuY28xJDAiBgkq\n" +
+            "hkiG9w0BCQEWFXRlYzRzY2llbmNlQGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEB\n" +
+            "BQADggEPADCCAQoCggEBALz3DJ/HB3T9/6Vs8JcQQlnZvqUVgy//RE5iySMrDVd7\n" +
+            "i7oYsTG3zZ0ATNXAd8hDlL6wimp/8DAWm3S0Dk5pBB71knCkNqaKtIHAHinSmTMd\n" +
+            "caYizMfVUIdbe43o/GM58y4dXtCNLMUvIGN5DFDiY/g5uRdmEUcxkhYGLv7WCNqn\n" +
+            "zEdLHUrgmjLdud6Ldooomb7R+R1FVEapp9szcYQONNx960clXZKdZcKb6YcTncQN\n" +
+            "V3wnpLAo/FfOQduv+iNVFhhE7nF5Eue8AaT53uRtUMBV7vUnVblN7yfWukOKUaDZ\n" +
+            "xKoZhloUQpiN8pg3QkaxzInEt9yheUeq7mRLsHDNVycCAwEAATANBgkqhkiG9w0B\n" +
+            "AQUFAAOCAQEAQG8FlKJZsC255kRLL54BAjd2fOqE8GAR7eGVt9mr+HdmU4m/gMrS\n" +
+            "PTB2ZwMquqrvw+v3/bO1Lj1HyQiYIgfPo5hlLXaZWc1Ao2SlnooK3rO1FI6++/yi\n" +
+            "OARjBg2VvSGjYQH93h2cm+ZGqsYL14wJo86HxxkRjGZQU/FhaLKWsabwh/9XPcgl\n" +
+            "6z47K9VR76c3MalFEc08ErILZXKwPUNpUdU1IzfpaySMq3RZvPnsZWVU4kWYaCLp\n" +
+            "UvxYEu37FRdy6YkTDOXd/PWcbOhdohcTmhJTrzQt6lhb1lJd+mhv5PHoYVPqzpc3\n" +
+            "7aXonx43QzkKUgDq+JBtcJlfzaX5NvOLkQ==\n" +
+            "-----END CERTIFICATE-----";
 
-            AndroidHttpsPlugin.AddCertificate(cert1);
-            AndroidHttpsPlugin.AddCertificate(cert2);
-            mInitialized = true;
-#else
-
-            mInitialized = false;
-#endif
-        }
+        AndroidHttpsHelper.AddCertificate(cert1);
+        AndroidHttpsHelper.AddCertificate(cert2);
+        mInitialized = true;
     }
 
 	// Use this for initialization
@@ -101,16 +91,18 @@ TiQhVKnT/a8KxWgGDyzO6xIg
         WWW wwwget = new WWW(url);
         yield return wwwget;
 
-        mResponse += "URL: " + url + "/n";
+        mResponse += "URL: " + url;
         if (!string.IsNullOrEmpty(wwwget.error))
         {
-            mResponse += "<color=#FF0000>Error: " + wwwget.error + "</color>\nResponse: " + wwwget.text;
+            mResponse += "\n<color=#FF0000>Error: " + wwwget.error + "</color>";
+            mResponse += "\nResponse: " + wwwget.text;
         }else
         {
             string response = wwwget.text;
             if (response.Length > 200)
                 response = response.Substring(0, 200);
-            mResponse += "testSuccessful\nResponse: " + response;
+            mResponse += "\n<color=#00FF00>Connection successfull!</color> ";
+            mResponse += "\nResponse: " + response;
         }
 
         mResponse += "\n\n";
@@ -133,7 +125,7 @@ TiQhVKnT/a8KxWgGDyzO6xIg
         }
         else
         {
-            GUILayout.Label("Server response: " + mResponse);
+            GUILayout.Label(mResponse);
         }
         GUILayout.EndVertical();
     }
