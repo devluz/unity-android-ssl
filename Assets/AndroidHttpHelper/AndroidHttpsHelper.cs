@@ -12,14 +12,14 @@ using UnityEngine;
 /// </summary>
 public class AndroidHttpsHelper
 {
-
+    private static readonly string JAVA_CLASS_NAME = "co.fourscience.androidhttpsplugin.AndroidHttps";
 
     public static void IgnoreCertificates()
     {
 #if UNITY_ANDROID
         if (Application.platform == RuntimePlatform.Android)
         {
-            AndroidJavaClass clsJavaSSLHelper = new AndroidJavaClass("co.fourscience.androidhttpsplugin.AndroidHttps");
+            AndroidJavaClass clsJavaSSLHelper = new AndroidJavaClass(JAVA_CLASS_NAME);
             clsJavaSSLHelper.CallStatic("ignoreCertifcates");
         }
 #endif
@@ -30,7 +30,7 @@ public class AndroidHttpsHelper
 #if UNITY_ANDROID
         if (Application.platform == RuntimePlatform.Android)
         {
-            AndroidJavaClass clsJavaSSLHelper = new AndroidJavaClass("co.fourscience.androidhttpsplugin.AndroidHttps");
+            AndroidJavaClass clsJavaSSLHelper = new AndroidJavaClass(JAVA_CLASS_NAME);
             byte[] certBytes = System.Text.Encoding.ASCII.GetBytes(certFileContent);
             clsJavaSSLHelper.CallStatic("trustOnly", certBytes);
         }
@@ -42,7 +42,7 @@ public class AndroidHttpsHelper
 #if UNITY_ANDROID
         if (Application.platform == RuntimePlatform.Android)
         {
-            AndroidJavaClass clsJavaSSLHelper = new AndroidJavaClass("co.fourscience.androidhttpsplugin.AndroidHttps");
+            AndroidJavaClass clsJavaSSLHelper = new AndroidJavaClass(JAVA_CLASS_NAME);
             byte[] certBytes = System.Text.Encoding.ASCII.GetBytes(certFileContent);
             clsJavaSSLHelper.CallStatic("addCertificate", certBytes);
         }
