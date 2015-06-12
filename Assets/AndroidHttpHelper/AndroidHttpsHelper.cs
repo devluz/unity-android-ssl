@@ -12,7 +12,9 @@ using UnityEngine;
 /// </summary>
 public class AndroidHttpsHelper
 {
+#if UNITY_ANDROID
     private static readonly string JAVA_CLASS_NAME = "co.fourscience.androidhttpsplugin.AndroidHttps";
+#endif
 
     public static void IgnoreCertificates()
     {
